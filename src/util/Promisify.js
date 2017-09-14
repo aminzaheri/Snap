@@ -14,7 +14,7 @@ module.exports.wrap = function () {
     return new Promise(function (resolve, reject) {
         args.push({
             success: function (results) {
-                resolve(results);
+                resolve(results);                
             },
             error: function (error) {
                 reject(error)
@@ -31,10 +31,10 @@ module.exports.wrapWithThis = function () {
     var args = Array.prototype.slice.call(arguments, 2);   
     return new Promise(function (resolve, reject) {
         args.push({
-            success: function (results) {
+            success: function (results) {                
                 resolve(results);
             },
-            error: function (error) {
+            error: function (error) {                
                 reject(error)
             }
         });

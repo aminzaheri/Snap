@@ -20,26 +20,25 @@ const DefaultUserProfilePic = "https://robohash.org/";
  * @ResponseType("RegisterUserResponse")
  */
 exports.registerUser = function (Backtory, UserDetailsRepo, ErrorCodes, MergeObject, requestData) {
-    let user = {
+    let user = {        
         "username": requestData.userName.value(),
         "email": requestData.email.value(),
         "password": requestData.password.value(),        
     };
     let savedUser = undefined;
     let promise = Promisify.wrap(Backtory.Users.signUp, user);    
-    return promise.then(function (user) {
-        let userDetails = new UserDetails();
+    return promise.then(function (user) {        
+        let userDetails = new UserDetails();        
         userDetails.setUserName(requestData.userName.value());
         userDetails.setPassword(requestData.password.value());
-        userDetails.setEmail(requestData.email.value());
-        console.log(userDetails,userDetails.save);
+        userDetails.setEmail(requestData.email.value());        
         return Promisify.wrapWithThis(userDetails.save, userDetails);
-    }).then(function (saveResponse) {
+    }).then(function (saveResponse) {        
         savedUser = saveResponse;
         return loginInternal(saveResponse.getEmail(), requestData.password.value());
-    }).then(function (loginResult) {
+    }).then(function (loginResult) {        
         return MergeObject({
-            userId: savedUser.getId(),
+            id: savedUser.getId(),
             email: savedUser.getEmail()
         }, loginResult)
     });
@@ -65,8 +64,7 @@ function loginInternal(username, password) {
     header["X-Backtory-Authentication-Key"] = config.integratedMasterKey;    
     return new Promise(function (resolve, reject) {        
         unirest.post(authUrl + '/login/').headers(header).field('username', username).field('password', password)
-            .end(function (response) {
-                console.log(response.status);
+            .end(function (response) {                
                 if (response.status === 200) {                    
                     let result = {
                         accessToken: response.body["access_token"],
@@ -83,7 +81,6 @@ function loginInternal(username, password) {
             });
     });
 }
-
 
 /**
  * @AutoWired()

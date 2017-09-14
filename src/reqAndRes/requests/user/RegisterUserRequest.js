@@ -12,7 +12,7 @@ function RegisterUserRequest(){
 
 RegisterUserRequest.prototype = Object.create(ValidatableObject.prototype);
 
-RegisterUserRequest.prototype.init = function(){
+RegisterUserRequest.prototype.init = function(){	
 	this.userName = new StringField(true);
     this.email = new StringField(true);    
     this.password = new StringField(true);    

@@ -5,7 +5,7 @@ const Promisify = require("../../util/Promisify");
 const ErrorCodes = require("../../util/ErrorCodes");
 const  TimeHelper = require('../../util/TimeHelper');
 var UserDetails = Backtory.Object.extend('UserDetails',{
-    getId(){return this.get(UserDetails.Col.id)},
+    getId(){return this.get(UserDetails.Col._id)},
     getImage(){return this.get(UserDetails.Col.image)},
     getName(){return this.get(UserDetails.Col.name)},
     getUserName(){return this.get(UserDetails.Col.userName)},
@@ -23,7 +23,7 @@ var UserDetails = Backtory.Object.extend('UserDetails',{
     getDeviceToken(){return this.get(UserDetails.Col.deviceToken)},
     getFlag(){return this.get(UserDetails.Col.flag)},    
 
-    setId(value){return this.set(UserDetails.Col.Id,value)},
+    setId(value){return this.set(UserDetails.Col._id,value)},
     setImage(value){return this.set(UserDetails.Col.image,value)},
     setName(value){return this.set(UserDetails.Col.name,value)},
     setUserName(value){return this.set(UserDetails.Col.userName,value)},
@@ -44,7 +44,7 @@ var UserDetails = Backtory.Object.extend('UserDetails',{
     get Name(){return 'UserDetails'},
 });
 UserDetails.Col = {    
-    get id(){return 'id'},
+    get _id(){return '_id'},
     get image(){return 'image'},
     get name(){return 'name'},
     get userName(){return 'userName'},

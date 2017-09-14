@@ -17,7 +17,7 @@ function RegisterUserResponse(){
 RegisterUserResponse.prototype = Object.create(LoginUserResponse.prototype);
 
 RegisterUserResponse.prototype.init = function(){
-    this.userId = new IdField(true);
+    this.id = new IdField(true);
     this.email = new StringField(false);
     LoginUserResponse.prototype.init.apply(this, arguments);
     return this;
