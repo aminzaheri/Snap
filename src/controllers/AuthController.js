@@ -32,6 +32,7 @@ exports.registerUser = function (Backtory, UserDetailsRepo, ErrorCodes, MergeObj
         userDetails.setUserName(requestData.userName.value());
         userDetails.setPassword(requestData.password.value());
         userDetails.setEmail(requestData.email.value());        
+        console.log("amin");
         return Promisify.wrapWithThis(userDetails.save, userDetails);
     }).then(function (saveResponse) {        
         savedUser = saveResponse;
