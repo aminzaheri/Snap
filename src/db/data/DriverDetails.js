@@ -2,8 +2,8 @@
 'use strict';
 const Backtory = require("../../provider/LibsProvider").backtory();
 var DriverDetails = Backtory.Object.extend('DriverDetails',{
-    getId(){return this.get(DriverDetails.Col.Id)},
-    getName(){return this.get(DriverDetails.Col.Name)},
+    getId(){return this.get(DriverDetails.Col._id)},
+    getName(){return this.get(DriverDetails.Col.name)},
     getUserName(){return this.get(DriverDetails.Col.userName)},
     getPassword(){return this.get(DriverDetails.Col.password)},
     getPhone(){return this.get(DriverDetails.Col.phone)},
@@ -19,7 +19,8 @@ var DriverDetails = Backtory.Object.extend('DriverDetails',{
     getType() {return this.get(DriverDetails.Col.type)},
     getRating() {return this.get(DriverDetails.Col.rating)},
     getLicenseExpiryDate() {return this.get(DriverDetails.Col.licenseExpiryDate)},
-    getInsurace() {return this.get(DriverDetails.Col.insurance)},
+    getLicensePlate() {return this.get(DriverDetails.Col.licensePlate)},
+    getInsurance() {return this.get(DriverDetails.Col.insurance)},
     getSeatingCapacity() {return this.get(DriverDetails.Col.seatingCapacity)},
     getCarModel() {return this.get(DriverDetails.Col.carModel)},
     getCarMake() {return this.get(DriverDetails.Col.carMake)},
@@ -28,8 +29,8 @@ var DriverDetails = Backtory.Object.extend('DriverDetails',{
     getSocketStatus() {return this.get(DriverDetails.Col.socketStatus)},
     getFlag() {return this.get(DriverDetails.Col.flag)},
 
-    setId(value){this.set(DriverDetails.Col.Id,value)},
-    setName(value){this.set(DriverDetails.Col.Name,value)},
+    setId(value){this.set(DriverDetails.Col._id,value)},
+    setName(value){this.set(DriverDetails.Col.name,value)},
     setUserName(value){this.set(DriverDetails.Col.userName,value)},
     setPassword(value){this.set(DriverDetails.Col.password,value)},
     setPhone(value){this.set(DriverDetails.Col.phone,value)},
@@ -45,7 +46,8 @@ var DriverDetails = Backtory.Object.extend('DriverDetails',{
     setType(value) {this.set(DriverDetails.Col.type,value)},
     setRating(value) {this.set(DriverDetails.Col.rating,value)},
     setLicenseExpiryDate(value) {this.set(DriverDetails.Col.licenseExpiryDate,value)},
-    setInsurace(value) {this.set(DriverDetails.Col.insurance,value)},
+    setLicensePlate(value) {this.set(DriverDetails.Col.licensePlate,value)},
+    setInsurance(value) {this.set(DriverDetails.Col.insurance,value)},
     setSeatingCapacity(value) {this.set(DriverDetails.Col.seatingCapacity,value)},
     setCarModel(value) {this.set(DriverDetails.Col.carModel,value)},
     setCarMake(value) {this.set(DriverDetails.Col.carMake,value)},
@@ -57,7 +59,7 @@ var DriverDetails = Backtory.Object.extend('DriverDetails',{
     get Name(){return 'DriverDetails'},
 });
 DriverDetails.Col = {
-    get id(){return 'id'},
+    get _id(){return '_id'},
     get name(){return 'name'},
     get userName(){return 'userName'},
     get password(){return 'password'},
@@ -74,6 +76,7 @@ DriverDetails.Col = {
     get type(){return 'type'},
     get rating(){return 'rating'},
     get licenseExpiryDate(){return 'licenseExpiryDate'},
+    get licensePlate(){return 'licensePlate'},
     get insurance(){return 'insurance'},
     get seatingCapacity(){return 'seatingCapacity'},
     get carModel(){return 'carModel'},

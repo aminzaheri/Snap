@@ -4,6 +4,11 @@
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
+    "registerDriver": {
+        "handlerName": "generated/AuthController.registerDriver",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
     "login": {
         "handlerName": "generated/AuthController.login",
         "timeLimitInMilliSeconds": 6000,

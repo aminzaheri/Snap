@@ -9,6 +9,7 @@ var unirest = require("unirest");
 var authUrl = 'https://api.backtory.com/auth';
 const Promisify = require("../util/Promisify");
 const UserDetails = require("../db/data/UserDetails");
+const DriverDetails = require("../db/data/DriverDetails");
 
 const DefaultUserProfilePic = "https://robohash.org/";
 
@@ -41,6 +42,46 @@ exports.registerUser = function (Backtory, UserDetailsRepo, ErrorCodes, MergeObj
         return MergeObject({
             id: savedUser.getId(),
             email: savedUser.getEmail()
+        }, loginResult)
+    });
+};
+
+exports.registerDriver = function (Backtory, UserDetailsRepo, ErrorCodes, MergeObject, requestData) {    
+    let driver = {
+        "username": requestData.userName.value(),
+        "email": requestData.email.value(),
+        "password": requestData.password.value(),
+    };        
+    let savedDriver = undefined;
+    let promise = Promisify.wrap(Backtory.Users.signUp, driver);    
+    return promise.then(function (driver) {        
+        let driverDetails = new DriverDetails();
+        driverDetails.setName(requestData.name.value());
+        driverDetails.setUserName(requestData.userName.value());
+        driverDetails.setPhone(requestData.phone.value());
+        driverDetails.setEmail(requestData.email.value());        
+        driverDetails.setPassword(requestData.password.value());        
+        driverDetails.setDob(requestData.dob.value());  
+        driverDetails.setGender(requestData.gender.value());
+        driverDetails.setAddress(requestData.address.value());
+        driverDetails.setCarMake(requestData.car_make.value());
+        driverDetails.setCarModel(requestData.car_model.value());
+        driverDetails.setCarType(requestData.car_type.value());
+        driverDetails.setCarNo(requestData.car_no.value());
+        driverDetails.setSeatingCapacity(requestData.seating_capacity.value());
+        driverDetails.setLicenseNo(requestData.license_no.value());
+        driverDetails.setLicenseExpiryDate(requestData.license_expiry_date.value());
+        driverDetails.setLicensePlate(requestData.license_plate.value());
+        driverDetails.setInsurance(requestData.insurance.value());
+       // driverDetails.setIsDevice(requestData.isdevice.value());                
+        return Promisify.wrapWithThis(driverDetails.save, driverDetails);
+    }).then(function (saveResponse) {        
+        savedDriver = saveResponse;
+        return loginInternal(saveResponse.getEmail(), requestData.password.value());
+    }).then(function (loginResult) {        
+        return MergeObject({
+            id: savedDriver.getId(),
+            email: savedDriver.getEmail()
         }, loginResult)
     });
 };

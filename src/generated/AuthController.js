@@ -8,6 +8,12 @@ var original = originalModule.registerUser;
  original =  runAround( original, originalModule, __dirname, "../requestHandler/runtime/Controller_AspectItem_42312.js", "aspect", "{\"passIndexes\":[-1],\"requestType\":\"../reqAndRes/requests/user/RegisterUserRequest.js\",\"responseType\":\"../reqAndRes/responses/user/RegisterUserResponse.js\",\"requestConverter\":{\"address\":\"../../converters/RequestConverter.js\",\"functionName\":\"convert\"},\"responseConverter\":{\"address\":\"../../converters/ResponseConverter.js\",\"functionName\":\"convert\"},\"errorConverter\":{\"address\":\"../../converters/ErrorConverter.js\",\"functionName\":\"convert\"}}"); 
  return original. apply( null, arguments); 
   }; 
+  module.exports.registerDriver = function ( requestBody , context ) { 
+var original = originalModule.registerDriver; 
+ original =  runAround( original, originalModule, __dirname, "../annotationRuntimeModules/AutoWired_AspectItem_75053.js", "aspect", "{\"originalArguments\":[\"Backtory\",\"UserDetailsRepo\",\"ErrorCodes\",\"MergeObject\",\"requestData\"],\"autoWiredModules\":{\"Backtory\":{\"moduleAddress\":\"../generated/LibsProvider.js\",\"functionName\":\"backtory\"},\"UserDetailsRepo\":{\"moduleName\":\"UserDetailsRepo\",\"moduleAddress\":\"../generated/UserDetailsRepo.js\"},\"ErrorCodes\":{\"moduleName\":\"ErrorCodes\",\"moduleAddress\":\"../util/ErrorCodes.js\"},\"MergeObject\":{\"moduleName\":\"MergeObject\",\"moduleAddress\":\"../util/MergeObject.js\"}}}"); 
+ original =  runAround( original, originalModule, __dirname, "../requestHandler/runtime/Controller_AspectItem_42312.js", "aspect", "{\"passIndexes\":[-1],\"requestType\":\"../reqAndRes/requests/driver/RegisterDriverRequest.js\",\"responseType\":\"../reqAndRes/responses/driver/RegisterDriverResponse.js\",\"requestConverter\":{\"address\":\"../../converters/RequestConverter.js\",\"functionName\":\"convert\"},\"responseConverter\":{\"address\":\"../../converters/ResponseConverter.js\",\"functionName\":\"convert\"},\"errorConverter\":{\"address\":\"../../converters/ErrorConverter.js\",\"functionName\":\"convert\"}}"); 
+ return original. apply( null, arguments); 
+  }; 
    module.exports.login = function ( requestBody , context ) { 
 var original = originalModule.login; 
  original =  runAround( original, originalModule, __dirname, "../annotationRuntimeModules/AutoWired_AspectItem_75053.js", "aspect", "{\"originalArguments\":[\"ErrorCodes\",\"requestData\"],\"autoWiredModules\":{\"ErrorCodes\":{\"moduleName\":\"ErrorCodes\",\"moduleAddress\":\"../util/ErrorCodes.js\"}}}"); 
