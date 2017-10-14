@@ -1,35 +1,35 @@
   var runBefore = require ('../moduleGenerator/RunBeforeAspectRunner.js') 
    var runAfter = require ('../moduleGenerator/RunAfterAspectRunner.js') 
    var runAround = require ('../moduleGenerator/RunAroundAspectRunner.js') 
-   var originalModule = require ('../db/repo/MovieRepo.js') 
-   module.exports.getMovies = function ( skip , limit ) { 
-var original = originalModule.getMovies; 
+   var originalModule = require ('../db/repo/CarTypeRepo.js') 
+   module.exports.getCarTypes = function ( skip , limit ) { 
+var original = originalModule.getCarTypes; 
  return original. apply( null, arguments); 
   }; 
-   module.exports.getMovieById = function ( movieId ) { 
-var original = originalModule.getMovieById; 
+  /* module.exports.getCarTypeById = function ( carTypeId ) { 
+var original = originalModule.getCarTypeById; 
  return original. apply( null, arguments); 
   }; 
-   module.exports.getMoviesByListOfId = function ( movieIds ) { 
-var original = originalModule.getMoviesByListOfId; 
+   module.exports.getCarTypesByListOfId = function ( carTypeIds ) { 
+var original = originalModule.getCarTypesByListOfId; 
  return original. apply( null, arguments); 
   }; 
-   module.exports.updateMovieRating = function ( movie , starInc , countInc ) { 
-var original = originalModule.updateMovieRating; 
+   module.exports.updateCarTypeRating = function ( carType , starInc , countInc ) { 
+var original = originalModule.updateCarTypeRating; 
  return original. apply( null, arguments); 
   }; 
-   module.exports.saveMovie = function ( name , releaseDate , poster , director , writer , production , actors , genre , plot , runtime , country , boxOffice ) { 
-var original = originalModule.saveMovie; 
+   module.exports.saveCarType = function ( name , releaseDate , poster , director , writer , production , actors , genre , plot , runtime , country , boxOffice ) { 
+var original = originalModule.saveCarType; 
  return original. apply( null, arguments); 
   }; 
-   module.exports.addAllMoviesToDbIfNeeded = function () { 
-var original = originalModule.addAllMoviesToDbIfNeeded; 
+   module.exports.addAllCarTypesToDbIfNeeded = function () { 
+var original = originalModule.addAllCarTypesToDbIfNeeded; 
  original =  runAround( original, originalModule, __dirname, "../annotationRuntimeModules/AutoWired_AspectItem_75053.js", "aspect", "{\"originalArguments\":[\"UserFavoriteRepo\",\"UserRatingRepo\"],\"autoWiredModules\":{\"UserFavoriteRepo\":{\"moduleName\":\"UserFavoriteRepo\",\"moduleAddress\":\"../generated/UserFavoriteRepo.js\"},\"UserRatingRepo\":{\"moduleName\":\"UserRatingRepo\",\"moduleAddress\":\"../generated/UserRatingRepo.js\"}}}"); 
  return original. apply( null, arguments); 
   }; 
-   module.exports.addAllMoviesToDb = function () { 
-var original = originalModule.addAllMoviesToDb; 
+   module.exports.addAllCarTypesToDb = function () { 
+var original = originalModule.addAllCarTypesToDb;
  return original. apply( null, arguments); 
-  }; 
+  };*/ 
   
  

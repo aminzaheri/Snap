@@ -9,8 +9,13 @@
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
-    "login": {
-        "handlerName": "generated/AuthController.login",
+    "loginUser": {
+        "handlerName": "generated/AuthController.loginUser",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "loginDriver": {
+        "handlerName": "generated/AuthController.loginDriver",
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
@@ -49,8 +54,8 @@
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
-    "movieList": {
-        "handlerName": "generated/MovieController.getMovieList",
+    "carTypeList": {
+        "handlerName": "generated/DriverController.getCarTypeList",
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },

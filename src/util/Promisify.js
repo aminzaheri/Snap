@@ -25,7 +25,7 @@ module.exports.wrap = function () {
 };
 
 //first parameter is function second one is this parameter
-module.exports.wrapWithThis = function () {    
+module.exports.wrapWithThis = function () {
     var func = arguments[0];    
     var thisParam = arguments[1];    
     var args = Array.prototype.slice.call(arguments, 2);   

@@ -17,39 +17,39 @@ module.exports = {};
 /**
  * @AutoWired()
  */
-module.exports.makeMovieResponseList = makeMovieResponseList;
-function makeMovieResponseList(movieList, userId, UserFavoriteRepo, MovieListItemResponse){
+module.exports.makeCarTypeResponseList = makeCarTypeResponseList;
+function makeCarTypeResponseList(carTypeList, userId, CarTypeListItemResponse){
     let toReturn = [];
-    if(!movieList){
-        return Promise.resolve({movies: toReturn});
+    if(!carTypeList){
+        return Promise.resolve({carTypes: toReturn});
     }
-    let movieIdSet = new Set();
-    movieList.forEach(function(item){
-       movieIdSet.add(item.getId());
+    let carTypeIdSet = new Set();
+    carTypeList.forEach(function(item){
+       carTypeIdSet.add(item.getId());
     });
-    let movieIdList = Array.from(movieIdSet);
+    let carTypeIdList = Array.from(carTypeIdSet);
     let favoriteMap = {};
-    return UserFavoriteRepo.getUserFavoriteItemListById(userId, movieIdList).then(function(favoriteList){
+    /*return UserFavoriteRepo.getUserFavoriteItemListById(userId, carTypeIdList).then(function(favoriteList){
         if(!favoriteList || favoriteList.length <=0 ){
             return;
         }
         favoriteList.forEach(function (favorite) {
-            favoriteMap[favorite.getMovieId()] = favorite;
+            favoriteMap[favorite.getCarTypeId()] = favorite;
         });
-    }).then(function(){
-        movieList.forEach(function(movie){
-            let toAdd = new MovieListItemResponse();
-            toAdd.initFromData(movie, favoriteMap[movie.getId()]);
+    }).then(function(){*/
+        carTypeList.forEach(function(carType){
+            let toAdd = new CarTypeListItemResponse();
+            toAdd.initFromData(carType, favoriteMap[carType.getId()]);
             toReturn.push(toAdd);
         });
-        return {movies: toReturn};
-    });
+        return {carTypes: toReturn};
+    //});
 }
 
 /**
  * @AutoWired()
  */
-module.exports.makeFullMovieResponse = function(movie, userId, UserFavoriteRepo, MovieFullResponse){
+/*module.exports.makeFullMovieResponse = function(movie, userId, UserFavoriteRepo, MovieFullResponse){
 
     if(!movie){
 
@@ -66,7 +66,7 @@ module.exports.makeFullMovieResponse = function(movie, userId, UserFavoriteRepo,
 /**
  * @AutoWired()
  */
-module.exports.makeUserFavoriteMovieListResponse = function(userFavoriteList, MovieRepo,UserFavoriteRepo, MovieListItemResponse){
+/*module.exports.makeUserFavoriteMovieListResponse = function(userFavoriteList, MovieRepo,UserFavoriteRepo, MovieListItemResponse){
     let toReturn = [];
     if(!userFavoriteList || userFavoriteList.length <= 0){
         return Promise.resolve({movies: toReturn});
@@ -78,5 +78,5 @@ module.exports.makeUserFavoriteMovieListResponse = function(userFavoriteList, Mo
     return MovieRepo.getMoviesByListOfId(movieIds).then(function(movieList){
         return makeMovieResponseList(movieList, userFavoriteList[0].getUserId(), UserFavoriteRepo, MovieListItemResponse);
     });
-};
+};*/
 

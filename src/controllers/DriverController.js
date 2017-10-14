@@ -14,12 +14,12 @@
  * @Pagination()
  * @ActiveUser()
  */
-exports.getMovieList = function (activeUser, userSkip, userLimit, MovieRepo, MovieResponseHelper) {
+exports.getCarTypeList = function (activeUser, userSkip, userLimit, CarTypeRepo, CarTypeResponseHelper) {
     let userId = activeUser.userId;
-    return MovieRepo.addAllMoviesToDbIfNeeded().then(function(result){
-        return MovieRepo.getMovies(userSkip, userLimit)
-    }).then(function(list){
-        return MovieResponseHelper.makeMovieResponseList(list, userId);
+   /*return MovieRepo.addAllMoviesToDbIfNeeded().then(function(result){
+        
+    })*/return CarTypeRepo.getCarTypes(userSkip, userLimit).then(function(list){
+        return CarTypeResponseHelper.makeCarTypeResponseList(list, userId);
     });
 };
 

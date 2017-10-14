@@ -20,25 +20,26 @@ const DefaultUserProfilePic = "https://robohash.org/";
  * @RequestType("RegisterUserRequest")
  * @ResponseType("RegisterUserResponse")
  */
+
 exports.registerUser = function (Backtory, UserDetailsRepo, ErrorCodes, MergeObject, requestData) {
-    let user = {        
-        "username": requestData.userName.value(),
+    let user = {
+        "username": 'u' + requestData.userName.value() + 'u',
         "email": requestData.email.value(),
-        "password": requestData.password.value(),        
+        "password": requestData.password.value(),
     };
     let savedUser = undefined;
-    let promise = Promisify.wrap(Backtory.Users.signUp, user);    
-    return promise.then(function (user) {        
-        let userDetails = new UserDetails();        
-        userDetails.setUserName(requestData.userName.value());
+    let promise = Promisify.wrap(Backtory.Users.signUp, user);
+    return promise.then(function (user) {
+        let userDetails = new UserDetails();
+        userDetails.setUserName('u' + requestData.userName.value() + 'u');
         userDetails.setPassword(requestData.password.value());
-        userDetails.setEmail(requestData.email.value());        
+        userDetails.setEmail(requestData.email.value());
         console.log("amin");
         return Promisify.wrapWithThis(userDetails.save, userDetails);
-    }).then(function (saveResponse) {        
+    }).then(function (saveResponse) {
         savedUser = saveResponse;
         return loginInternal(saveResponse.getEmail(), requestData.password.value());
-    }).then(function (loginResult) {        
+    }).then(function (loginResult) {
         return MergeObject({
             id: savedUser.getId(),
             email: savedUser.getEmail()
@@ -46,18 +47,19 @@ exports.registerUser = function (Backtory, UserDetailsRepo, ErrorCodes, MergeObj
     });
 };
 
-exports.registerDriver = function (Backtory, UserDetailsRepo, ErrorCodes, MergeObject, requestData) {    
+exports.registerDriver = function (Backtory, UserDetailsRepo, ErrorCodes, MergeObject, requestData) {
     let driver = {
-        "username": requestData.userName.value(),
+        "firstName":"driver",
+        "username": ('d' + requestData.userName.value() + 'd'),
         "email": requestData.email.value(),
         "password": requestData.password.value(),
-    };        
+    };
     let savedDriver = undefined;
     let promise = Promisify.wrap(Backtory.Users.signUp, driver);    
     return promise.then(function (driver) {        
         let driverDetails = new DriverDetails();
         driverDetails.setName(requestData.name.value());
-        driverDetails.setUserName(requestData.userName.value());
+        driverDetails.setUserName(('d' + requestData.userName.value() + 'd'));
         driverDetails.setPhone(requestData.phone.value());
         driverDetails.setEmail(requestData.email.value());        
         driverDetails.setPassword(requestData.password.value());        
@@ -94,18 +96,25 @@ exports.registerDriver = function (Backtory, UserDetailsRepo, ErrorCodes, MergeO
  * @RequestType("LoginUserRequest")
  * @ResponseType("LoginUserResponse")
  */
-exports.login = function (ErrorCodes, requestData) {
+exports.loginUser = function (ErrorCodes, requestData) {
     var username = requestData.username.value();
     var password = requestData.password.value();
-    return loginInternal(username, password);
+    return loginInternal(username, password,'u');
+};
+
+exports.loginDriver = function (ErrorCodes, requestData) {
+    var username = requestData.username.value();
+    var password = requestData.password.value();
+    return loginInternal(username, password,'d');
 };
 
 
-function loginInternal(username, password) {    
+function loginInternal(username, password,mode) {
+    console.log(mode);
     var header = JSON.parse(JSON.stringify(config.lambdaHeaders));
-    header["X-Backtory-Authentication-Key"] = config.integratedMasterKey;    
+    header["X-Backtory-Authentication-Key"] = config.clientKey;    
     return new Promise(function (resolve, reject) {        
-        unirest.post(authUrl + '/login/').headers(header).field('username', username).field('password', password)
+        unirest.post(authUrl + '/login/').headers(header).field('username', mode + username + mode).field('password', password)
             .end(function (response) {                
                 if (response.status === 200) {                    
                     let result = {

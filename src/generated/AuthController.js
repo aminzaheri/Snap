@@ -14,8 +14,14 @@ var original = originalModule.registerDriver;
  original =  runAround( original, originalModule, __dirname, "../requestHandler/runtime/Controller_AspectItem_42312.js", "aspect", "{\"passIndexes\":[-1],\"requestType\":\"../reqAndRes/requests/driver/RegisterDriverRequest.js\",\"responseType\":\"../reqAndRes/responses/driver/RegisterDriverResponse.js\",\"requestConverter\":{\"address\":\"../../converters/RequestConverter.js\",\"functionName\":\"convert\"},\"responseConverter\":{\"address\":\"../../converters/ResponseConverter.js\",\"functionName\":\"convert\"},\"errorConverter\":{\"address\":\"../../converters/ErrorConverter.js\",\"functionName\":\"convert\"}}"); 
  return original. apply( null, arguments); 
   }; 
-   module.exports.login = function ( requestBody , context ) { 
-var original = originalModule.login; 
+   module.exports.loginUser = function ( requestBody , context ) { 
+var original = originalModule.loginUser; 
+ original =  runAround( original, originalModule, __dirname, "../annotationRuntimeModules/AutoWired_AspectItem_75053.js", "aspect", "{\"originalArguments\":[\"ErrorCodes\",\"requestData\"],\"autoWiredModules\":{\"ErrorCodes\":{\"moduleName\":\"ErrorCodes\",\"moduleAddress\":\"../util/ErrorCodes.js\"}}}"); 
+ original =  runAround( original, originalModule, __dirname, "../requestHandler/runtime/Controller_AspectItem_42312.js", "aspect", "{\"passIndexes\":[-1],\"requestType\":\"../reqAndRes/requests/user/LoginUserRequest.js\",\"responseType\":\"../reqAndRes/responses/user/LoginUserResponse.js\",\"requestConverter\":{\"address\":\"../../converters/RequestConverter.js\",\"functionName\":\"convert\"},\"responseConverter\":{\"address\":\"../../converters/ResponseConverter.js\",\"functionName\":\"convert\"},\"errorConverter\":{\"address\":\"../../converters/ErrorConverter.js\",\"functionName\":\"convert\"}}"); 
+ return original. apply( null, arguments); 
+  }; 
+  module.exports.loginDriver = function ( requestBody , context ) { 
+var original = originalModule.loginDriver; 
  original =  runAround( original, originalModule, __dirname, "../annotationRuntimeModules/AutoWired_AspectItem_75053.js", "aspect", "{\"originalArguments\":[\"ErrorCodes\",\"requestData\"],\"autoWiredModules\":{\"ErrorCodes\":{\"moduleName\":\"ErrorCodes\",\"moduleAddress\":\"../util/ErrorCodes.js\"}}}"); 
  original =  runAround( original, originalModule, __dirname, "../requestHandler/runtime/Controller_AspectItem_42312.js", "aspect", "{\"passIndexes\":[-1],\"requestType\":\"../reqAndRes/requests/user/LoginUserRequest.js\",\"responseType\":\"../reqAndRes/responses/user/LoginUserResponse.js\",\"requestConverter\":{\"address\":\"../../converters/RequestConverter.js\",\"functionName\":\"convert\"},\"responseConverter\":{\"address\":\"../../converters/ResponseConverter.js\",\"functionName\":\"convert\"},\"errorConverter\":{\"address\":\"../../converters/ErrorConverter.js\",\"functionName\":\"convert\"}}"); 
  return original. apply( null, arguments); 
