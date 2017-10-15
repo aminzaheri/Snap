@@ -14,12 +14,12 @@
  * @Pagination()
  * @ActiveUser()
  */
-exports.getCarTypeList = function (activeUser, userSkip, userLimit, CarTypeRepo, CarTypeResponseHelper) {
-    let userId = activeUser.userId;
+exports.getCarTypeList = function (userSkip, userLimit, CarTypeRepo, CarTypeResponseHelper) {
+    //let userId = activeUser.userId;
    /*return MovieRepo.addAllMoviesToDbIfNeeded().then(function(result){
         
     })*/return CarTypeRepo.getCarTypes(userSkip, userLimit).then(function(list){
-        return CarTypeResponseHelper.makeCarTypeResponseList(list, userId);
+        return CarTypeResponseHelper.makeCarTypeResponseList(list);
     });
 };
 

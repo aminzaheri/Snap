@@ -18,17 +18,17 @@ module.exports = {};
  * @AutoWired()
  */
 module.exports.makeCarTypeResponseList = makeCarTypeResponseList;
-function makeCarTypeResponseList(carTypeList, userId, CarTypeListItemResponse){
+function makeCarTypeResponseList(carTypeList,CarTypeListItemResponse){
     let toReturn = [];
     if(!carTypeList){
         return Promise.resolve({carTypes: toReturn});
     }
-    let carTypeIdSet = new Set();
+    /*let carTypeIdSet = new Set();
     carTypeList.forEach(function(item){
        carTypeIdSet.add(item.getId());
     });
     let carTypeIdList = Array.from(carTypeIdSet);
-    let favoriteMap = {};
+    let favoriteMap = {};*/
     /*return UserFavoriteRepo.getUserFavoriteItemListById(userId, carTypeIdList).then(function(favoriteList){
         if(!favoriteList || favoriteList.length <=0 ){
             return;
@@ -39,7 +39,7 @@ function makeCarTypeResponseList(carTypeList, userId, CarTypeListItemResponse){
     }).then(function(){*/
         carTypeList.forEach(function(carType){
             let toAdd = new CarTypeListItemResponse();
-            toAdd.initFromData(carType, favoriteMap[carType.getId()]);
+            toAdd.initFromData(carType);
             toReturn.push(toAdd);
         });
         return {carTypes: toReturn};
